@@ -27,15 +27,28 @@ if(window.scrollY > 80){
 }
 
 }
-window.onload = () =>{
-fadeOut();
-}
+// window.load = () =>{
+// fadeOut();
+// }
+
+document.onreadystatechange = function() {
+    if (document.readyState !== "complete") {
+        document.querySelector("body").style.visibility = "hidden";
+        document.querySelector(".loader-container").style.visibility = "visible";
+    } else {
+        fadeOut();
+        // document.querySelector(".loader-container").style.display = "none";
+        document.querySelector("body").style.visibility = "visible";
+    }
+};
+
+
 function loader (){
     document.querySelector('.loader-container').classList.add('active');
 }
 
 function fadeOut(){
-    setTimeout(loader, 4000)
+    setTimeout(loader, 500)
 }
 
 
